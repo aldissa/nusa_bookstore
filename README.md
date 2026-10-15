@@ -1,17 +1,76 @@
-# nusa_bookstore
+# NusaBookstore
 
-A new Flutter project.
+Aplikasi toko buku sederhana berbasis Flutter untuk mempraktikkan **State Management menggunakan Provider**.
 
-## Getting Started
+## Fitur
 
-This project is a starting point for a Flutter application.
+- Katalog buku (5 buku) dengan ikon placeholder
+- Tombol **Tambah** untuk memasukkan buku ke keranjang
+- Badge jumlah item pada ikon keranjang di AppBar, berubah otomatis
+- Halaman keranjang dengan tombol `-` dan `+` untuk mengubah jumlah
+- Total Item dan Total Pembayaran (format Rupiah) yang berubah otomatis
+- Checkout yang menampilkan `SnackBar` dan mengosongkan keranjang
+- Light Mode dan Dark Mode yang berlaku di seluruh aplikasi
 
-A few resources to get you started if this is your first Flutter project:
+## Konsep yang Digunakan
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+- `ChangeNotifier`: `CartProvider` dan `ThemeProvider`
+- `MultiProvider`: mendaftarkan kedua provider di root aplikasi
+- `Consumer`: membangun ulang bagian UI tertentu (badge, ikon tema)
+- `context.watch`: mendengarkan perubahan data di `build`
+- `context.read`: memanggil fungsi (tambah, kurang, checkout, ganti tema)
+- `MaterialApp`, `Scaffold`, `AppBar`, `Card`, `ListView`, `Row`, `Column`
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Struktur Folder
+lib/
+├── models/
+│ └── book.dart
+├── providers/
+│ ├── cart_provider.dart
+│ └── theme_provider.dart
+├── screens/
+│ ├── catalog_screen.dart
+│ └── cart_screen.dart
+└── main.dart
+
+
+## Screenshot
+
+### Halaman Katalog
+
+| Light Mode | Dark Mode |
+|---|---|
+| ![Katalog Light](screenshots/01-katalog-light.png) | ![Katalog Dark](screenshots/03-katalog-dark.png) |
+
+### Badge Jumlah Keranjang
+
+| Light Mode | Dark Mode |
+|---|---|
+| ![Badge Light](screenshots/02-badge-light.png) | ![Badge Dark](screenshots/04-badge-dark.png) |
+
+### Halaman Keranjang dengan Total Harga
+
+| Light Mode | Dark Mode |
+|---|---|
+| ![Keranjang Light](screenshots/05-keranjang-light.png) | ![Keranjang Dark](screenshots/06-keranjang-dark.png) |
+
+### SnackBar Setelah Checkout
+
+![Checkout SnackBar](screenshots/07-checkout-snackbar.png)
+
+## Cara Menjalankan
+
+```bash
+git clone https://github.com/aldissa/nusa_bookstore
+cd nusa_bookstore
+flutter pub get
+flutter run
+```
+
+## Dependensi
+
+- [provider](https://pub.dev/packages/provider)
+
+##
+
+Muhammad Aldi Syamsul Anwar, Universitas Nusaputra

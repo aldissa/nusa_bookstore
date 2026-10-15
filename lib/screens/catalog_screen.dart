@@ -58,16 +58,6 @@ class _BookCard extends StatelessWidget {
 
   const _BookCard({required this.book});
 
-  String _formatRupiah(int value) {
-    final s = value.toString();
-    final buffer = StringBuffer();
-    for (int i = 0; i < s.length; i++) {
-      if (i > 0 && (s.length - i) % 3 == 0) buffer.write('.');
-      buffer.write(s[i]);
-    }
-    return 'Rp $buffer';
-  }
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -98,7 +88,7 @@ class _BookCard extends StatelessWidget {
                   Text(book.author),
                   const SizedBox(height: 6),
                   Text(
-                    _formatRupiah(book.price),
+                    formatRupiah(book.price),
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
